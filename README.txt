@@ -1,7 +1,8 @@
-════════════════════════════════════════════════════════════════
-  SPANISH RESTAURANT WEBSITE BUNDLE — GUÍA / GUIDE
-  3 Plantillas HTML Profesionales para Restaurantes
-════════════════════════════════════════════════════════════════
+🔴 LIVE PREVIEWS – take a look, like them? Then buy them
+
+☀️  sol-cafe: https://vinayak8484.github.io/Spanish-restaurant-template-preview/sol-cafe-preview.html
+🌙  noche-fine-dining: https://vinayak8484.github.io/Spanish-restaurant-template-preview/noche-fine-dining-preview.html
+🔥  fuego-tapas: https://vinayak8484.github.io/Spanish-restaurant-template-preview/fuego-tapas-preview.html
 
 ¡BIENVENIDO!
 
@@ -10,7 +11,7 @@
 Estas son versiones de vista previa solo con fines de demostración.
 Las versiones completas y limpias están disponibles para su compra en Gumroad.
 
-👉 **[Compra el paquete completo en Gumroad] (https://vinayakganiger.gumroad.com/l/dcnbn)**
+👉 **[Compra el paquete completo en Gumroad] (https://vinayakganiger.gumroad.com/l/fhrlc)**
 
 
 ──────────────────────────────────────────────────────────────
