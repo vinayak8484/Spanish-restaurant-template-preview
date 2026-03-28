@@ -4,15 +4,14 @@
 🌙  noche-fine-dining: https://vinayak8484.github.io/Spanish-restaurant-template-preview/noche-fine-dining-preview.html
 🔥  fuego-tapas: https://vinayak8484.github.io/Spanish-restaurant-template-preview/fuego-tapas-preview.html
 
+👉 **[Compra el paquete completo en Gumroad] (https://vinayakganiger.gumroad.com/l/fhrlc)**
+
 ¡BIENVENIDO!
 
 ⚠️ Aviso de Vista Previa
 
 Estas son versiones de vista previa solo con fines de demostración.
 Las versiones completas y limpias están disponibles para su compra en Gumroad.
-
-👉 **[Compra el paquete completo en Gumroad] (https://vinayakganiger.gumroad.com/l/fhrlc)**
-
 
 ──────────────────────────────────────────────────────────────
   QUÉ HAY EN LA CARPETA
