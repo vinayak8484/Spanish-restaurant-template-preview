@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="es">
+<!--
+  ════════════════════════════════════════════════════════════════
+  SOL CAFE  –  Spanish Restaurant Website Template
+  Part of: Spanish Restaurant Bundle (ES/EN)
+  ────────────────────────────────────────────────────────────────
+  Created by  : Vinayak Ganiger
+  Co-created  : Claude (Anthropic AI)
+  Contact     : vinayakganiger445@gmail.com
+  WhatsApp    : https://wa.me/4916364141​97
+  ────────────────────────────────────────────────────────────────
+  License: Personal and commercial use permitted.
+  Redistribution or resale of this template is not permitted.
+  ════════════════════════════════════════════════════════════════
+-->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sol Café – Madrid</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --yellow:#F5C242;
+  --red:#D64045;
+  --cream:#FDF6EC;
+  --brown:#2C1810;
+  --warm:#8B4513;
+  --text:#3A2A1A;
+  --light:#FAF5EE;
+  --transition:0.3s ease;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+body.dark-mode{--cream:#1A1208;--light:#221A0E;--text:#F0E8D8;--brown:#F0E8D8}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+/* LOADER */
+#loader{position:fixed;inset:0;background:var(--brown);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:opacity 0.6s ease}
+#loader.hide{opacity:0;pointer-events:none}
+.sun-loader{width:64px;height:64px;position:relative;margin-bottom:20px}
+.sun-core{width:32px;height:32px;background:var(--yellow);border-radius:50%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
+.sun-ray{position:absolute;width:6px;height:14px;background:var(--yellow);border-radius:3px;top:50%;left:50%;transform-origin:bottom center}
+.sun-loader{animation:spinSun 2s linear infinite}
+@keyframes spinSun{to{transform:rotate(360deg)}}
+.loader-text{color:var(--yellow);font-family:'Playfair Display',serif;font-size:1.4rem;letter-spacing:3px}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:100;padding:20px 5%;display:flex;align-items:center;justify-content:space-between;transition:all var(--transition)}
+nav.scrolled{background:rgba(44,24,16,0.97);backdrop-filter:blur(12px);padding:14px 5%}
+body.dark-mode nav.scrolled{background:rgba(26,18,8,0.97)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;font-weight:700}
+.nav-logo span{color:var(--yellow)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.85);font-size:0.85rem;font-weight:500;letter-spacing:0.5px;transition:color var(--transition)}
+.nav-links a:hover{color:var(--yellow)}
+.nav-right{display:flex;align-items:center;gap:14px}
+.lang-switcher{display:flex;border:1.5px solid rgba(255,255,255,0.35);border-radius:100px;overflow:hidden}
+.lang-btn{padding:5px 11px;font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.75);background:transparent;border:none;border-right:1px solid rgba(255,255,255,0.25);cursor:pointer;transition:all var(--transition);font-family:'DM Sans',sans-serif}
+.lang-btn:last-child{border-right:none}
+.lang-btn.active{background:var(--yellow);color:var(--brown)}
+.dark-btn{background:none;border:1.5px solid rgba(255,255,255,0.35);border-radius:50%;width:34px;height:34px;color:#fff;cursor:pointer;font-size:0.9rem;display:flex;align-items:center;justify-content:center;transition:all var(--transition)}
+.dark-btn:hover{background:rgba(255,255,255,0.1)}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.nav-toggle span{width:24px;height:2px;background:#fff;border-radius:2px;transition:all var(--transition)}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(135deg,var(--brown) 0%,#5C2A15 100%);display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+.hero-text{display:flex;flex-direction:column;justify-content:center;padding:120px 5% 80px 8%;color:#fff}
+.hero-eyebrow{font-size:0.75rem;letter-spacing:4px;color:var(--yellow);text-transform:uppercase;margin-bottom:16px}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5vw,4.5rem);line-height:1.1;margin-bottom:20px}
+.hero-title .accent{color:var(--yellow);font-style:italic}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,0.75);line-height:1.7;max-width:420px;margin-bottom:36px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--yellow);color:var(--brown);padding:14px 28px;border-radius:100px;font-weight:700;font-size:0.88rem;letter-spacing:0.5px;transition:all var(--transition);border:none;cursor:pointer}
+.btn-primary:hover{background:#e6b535;transform:translateY(-2px)}
+.btn-outline{border:1.5px solid rgba(255,255,255,0.5);color:#fff;padding:14px 28px;border-radius:100px;font-weight:500;font-size:0.88rem;transition:all var(--transition)}
+.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,0.08)}
+.hero-image{position:relative;overflow:hidden}
+.hero-image img{width:100%;height:100%;object-fit:cover;opacity:0.75}
+.hero-badge{position:absolute;bottom:40px;left:40px;background:var(--yellow);color:var(--brown);padding:16px 20px;border-radius:16px;font-family:'Playfair Display',serif}
+.hero-badge strong{display:block;font-size:1.6rem}
+.hero-badge span{font-size:0.75rem;font-weight:400}
+
+/* STRIP */
+.strip{background:var(--yellow);padding:18px 5%;display:flex;justify-content:space-around;flex-wrap:wrap;gap:10px}
+.strip-item{display:flex;align-items:center;gap:10px;color:var(--brown)}
+.strip-item span{font-size:1.2rem}
+.strip-item p{font-size:0.82rem;font-weight:600;letter-spacing:0.3px}
+
+/* ABOUT */
+.about{padding:100px 8%;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;background:var(--light)}
+.about-imgs{position:relative;height:500px}
+.about-img-main{position:absolute;top:0;left:0;width:68%;height:80%;object-fit:cover;border-radius:20px}
+.about-img-accent{position:absolute;bottom:0;right:0;width:50%;height:55%;object-fit:cover;border-radius:20px;border:6px solid var(--cream)}
+body.dark-mode .about-img-accent{border-color:var(--cream)}
+.about-content .eyebrow{font-size:0.72rem;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:12px}
+.about-content h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3rem);line-height:1.2;margin-bottom:20px}
+.about-content p{color:rgba(58,42,26,0.75);line-height:1.8;margin-bottom:16px;font-size:0.95rem}
+body.dark-mode .about-content p{color:rgba(240,232,216,0.7)}
+.about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.tag{background:var(--yellow);color:var(--brown);padding:6px 14px;border-radius:100px;font-size:0.78rem;font-weight:600}
+
+/* MENU */
+.menu{padding:100px 8%;background:var(--cream)}
+body.dark-mode .menu{background:var(--cream)}
+.section-header{text-align:center;margin-bottom:56px}
+.section-header .eyebrow{font-size:0.72rem;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:10px}
+.section-header h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3rem)}
+.menu-tabs{display:flex;justify-content:center;gap:8px;margin-bottom:48px;flex-wrap:wrap}
+.tab-btn{padding:10px 22px;border-radius:100px;border:1.5px solid rgba(0,0,0,0.15);background:transparent;color:var(--text);font-size:0.83rem;font-weight:600;cursor:pointer;transition:all var(--transition);font-family:'DM Sans',sans-serif}
+.tab-btn.active{background:var(--brown);color:#fff;border-color:var(--brown)}
+body.dark-mode .tab-btn{border-color:rgba(255,255,255,0.2);color:var(--text)}
+body.dark-mode .tab-btn.active{background:var(--yellow);color:var(--brown);border-color:var(--yellow)}
+.tab-panel{display:none}
+.tab-panel.active{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.menu-card{background:var(--light);border-radius:16px;overflow:hidden;transition:transform var(--transition)}
+.menu-card:hover{transform:translateY(-4px)}
+.menu-card img{width:100%;height:180px;object-fit:cover}
+.menu-card-body{padding:18px}
+.menu-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.menu-card-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700}
+.menu-card-price{background:var(--yellow);color:var(--brown);padding:4px 10px;border-radius:100px;font-size:0.8rem;font-weight:700;white-space:nowrap}
+.menu-card-desc{font-size:0.82rem;color:rgba(58,42,26,0.65);line-height:1.6}
+body.dark-mode .menu-card-desc{color:rgba(240,232,216,0.6)}
+
+/* SPECIALS */
+.specials{padding:100px 8%;background:var(--brown);color:#fff}
+body.dark-mode .specials{background:#110C05}
+.specials .section-header .eyebrow{color:var(--yellow)}
+.specials .section-header h2{color:#fff}
+.specials-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px}
+.special-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:28px;transition:all var(--transition)}
+.special-card:hover{background:rgba(255,255,255,0.12);transform:translateY(-4px)}
+.special-day{color:var(--yellow);font-size:0.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+.special-name{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:8px}
+.special-desc{font-size:0.83rem;color:rgba(255,255,255,0.65);line-height:1.6;margin-bottom:16px}
+.special-price{color:var(--yellow);font-weight:700;font-size:1rem}
+
+/* GALLERY */
+.gallery{padding:100px 8%;background:var(--light)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,220px);gap:14px}
+.gallery-grid img{width:100%;height:100%;object-fit:cover;border-radius:14px;transition:transform 0.4s ease}
+.gallery-grid img:hover{transform:scale(1.03)}
+.gallery-grid img:first-child{grid-row:span 2;height:100%}
+
+/* TESTIMONIALS */
+.testimonials{padding:100px 8%;background:var(--cream)}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
+.testi-card{background:var(--light);border-radius:16px;padding:28px}
+.stars{color:var(--yellow);font-size:1rem;margin-bottom:12px;letter-spacing:2px}
+.testi-text{font-size:0.9rem;line-height:1.7;color:rgba(58,42,26,0.8);font-style:italic;margin-bottom:16px}
+body.dark-mode .testi-text{color:rgba(240,232,216,0.7)}
+.testi-name{font-weight:700;font-size:0.88rem}
+.testi-loc{font-size:0.78rem;color:rgba(58,42,26,0.5)}
+body.dark-mode .testi-loc{color:rgba(240,232,216,0.5)}
+
+/* CONTACT */
+.contact{padding:100px 8%;background:var(--light);display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.contact-info .eyebrow{font-size:0.72rem;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:12px}
+.contact-info h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);margin-bottom:24px}
+.contact-detail{display:flex;gap:14px;margin-bottom:20px;align-items:flex-start}
+.contact-icon{background:var(--yellow);width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.contact-detail-text strong{display:block;font-size:0.88rem;font-weight:700;margin-bottom:3px}
+.contact-detail-text span{font-size:0.83rem;color:rgba(58,42,26,0.65)}
+body.dark-mode .contact-detail-text span{color:rgba(240,232,216,0.6)}
+.map-wrap{border-radius:20px;overflow:hidden;height:320px;margin-top:24px}
+.map-wrap iframe{width:100%;height:100%;border:none}
+.contact-form{background:var(--cream);padding:36px;border-radius:20px}
+body.dark-mode .contact-form{background:var(--cream)}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:0.8rem;font-weight:600;margin-bottom:6px;color:var(--text)}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:12px 16px;border:1.5px solid rgba(0,0,0,0.12);border-radius:10px;font-size:0.88rem;font-family:'DM Sans',sans-serif;background:var(--light);color:var(--text);transition:border-color var(--transition)}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--yellow)}
+.form-group textarea{resize:vertical;min-height:110px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+/* NEWSLETTER */
+.newsletter{background:var(--yellow);padding:80px 8%;text-align:center}
+.newsletter h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.5rem);color:var(--brown);margin-bottom:12px}
+.newsletter p{color:rgba(44,24,16,0.75);font-size:0.95rem;margin-bottom:28px}
+.newsletter-form{display:flex;gap:10px;max-width:480px;margin:0 auto;flex-wrap:wrap}
+.newsletter-form input{flex:1;min-width:200px;padding:14px 18px;border:none;border-radius:100px;font-size:0.88rem;font-family:'DM Sans',sans-serif;outline:none}
+.newsletter-form button{background:var(--brown);color:#fff;padding:14px 26px;border:none;border-radius:100px;font-weight:700;font-size:0.85rem;cursor:pointer;transition:all var(--transition)}
+.newsletter-form button:hover{background:#3D1A0A}
+
+/* FOOTER */
+footer{background:var(--brown);color:#fff;padding:60px 8% 30px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand .nav-logo{font-size:1.6rem;margin-bottom:12px}
+.footer-brand p{font-size:0.83rem;color:rgba(255,255,255,0.6);line-height:1.7;max-width:260px}
+.footer-col h4{font-size:0.78rem;letter-spacing:3px;text-transform:uppercase;color:var(--yellow);margin-bottom:16px}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:10px}
+.footer-col a{font-size:0.83rem;color:rgba(255,255,255,0.65);transition:color var(--transition)}
+.footer-col a:hover{color:var(--yellow)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:0.78rem;color:rgba(255,255,255,0.45)}
+.footer-bottom a{color:rgba(255,255,255,0.65);transition:color var(--transition)}
+.footer-bottom a:hover{color:var(--yellow)}
+.footer-credit{font-size:0.75rem;color:rgba(255,255,255,0.35);text-align:center;margin-top:12px}
+.footer-credit a{color:rgba(255,255,255,0.5);text-decoration:underline}
+
+/* FLOAT CTA */
+.float-cta{position:fixed;bottom:28px;right:28px;background:var(--red);color:#fff;padding:14px 22px;border-radius:100px;font-weight:700;font-size:0.85rem;box-shadow:0 8px 28px rgba(214,64,69,0.45);display:flex;align-items:center;gap:8px;cursor:pointer;border:none;transition:all var(--transition);z-index:90;font-family:'DM Sans',sans-serif}
+.float-cta:hover{background:#c03038;transform:translateY(-2px)}
+.float-cta.hide{opacity:0;pointer-events:none}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .hero-image{height:380px}
+  .about{grid-template-columns:1fr;gap:40px}
+  .about-imgs{height:320px}
+  .contact{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .gallery-grid img:first-child{grid-row:span 1;height:220px}
+  .nav-links{display:none}
+  .nav-toggle{display:flex}
+}
+@media(max-width:600px){
+  .hero-text{padding:100px 5% 60px}
+  .footer-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="sun-loader">
+    <div class="sun-core"></div>
+    <div class="sun-ray" style="transform:rotate(0deg) translateY(-22px)"></div>
+    <div class="sun-ray" style="transform:rotate(45deg) translateY(-22px)"></div>
+    <div class="sun-ray" style="transform:rotate(90deg) translateY(-22px)"></div>
+    <div class="sun-ray" style="transform:rotate(135deg) translateY(-22px)"></div>
+    <div class="sun-ray" style="transform:rotate(180deg) translateY(-22px)"></div>
+    <div class="sun-ray" style="transform:rotate(225deg) translateY(-22px)"></div>
+    <div class="sun-ray" style="transform:rotate(270deg) translateY(-22px)"></div>
+    <div class="sun-ray" style="transform:rotate(315deg) translateY(-22px)"></div>
+  </div>
+  <div class="loader-text">SOL CAFÉ</div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Sol <span>Café</span></a>
+  <ul class="nav-links">
+    <li><a href="#about" data-i18n="nav_about">Nosotros</a></li>
+    <li><a href="#menu" data-i18n="nav_menu">Carta</a></li>
+    <li><a href="#gallery" data-i18n="nav_gallery">Galería</a></li>
+    <li><a href="#contact" data-i18n="nav_contact">Contacto</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="es">ES</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <button class="dark-btn" id="darkToggle">🌙</button>
+    <div class="nav-toggle" id="navToggle">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow" data-i18n="hero_eyebrow">Madrid, desde 1987</p>
+    <h1 class="hero-title">
+      <span data-i18n="hero_title1">El sabor</span><br>
+      <span class="accent" data-i18n="hero_title2">de siempre</span>
+    </h1>
+    <p class="hero-sub" data-i18n="hero_sub">Desayunos caseros, tapas auténticas y el mejor café con leche de Madrid. Ven a sentirte como en casa.</p>
+    <div class="hero-cta">
+      <a href="#menu" class="btn-primary" data-i18n="hero_btn1">Ver la carta</a>
+      <a href="#contact" class="btn-outline" data-i18n="hero_btn2">Reservar mesa</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=900&q=80" alt="Sol Café interior">
+    <div class="hero-badge">
+      <strong>+35</strong>
+      <span data-i18n="hero_badge">años sirviendo Madrid</span>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-item"><span>☕</span><p data-i18n="strip1">Café de especialidad</p></div>
+  <div class="strip-item"><span>🥐</span><p data-i18n="strip2">Churros artesanos</p></div>
+  <div class="strip-item"><span>🍷</span><p data-i18n="strip3">Vinos de la tierra</p></div>
+  <div class="strip-item"><span>🕐</span><p data-i18n="strip4">Lun–Dom 8:00–23:00</p></div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-imgs reveal">
+    <img class="about-img-main" src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=700&q=80" alt="Café interior">
+    <img class="about-img-accent" src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&q=80" alt="Coffee">
+  </div>
+  <div class="about-content reveal">
+    <p class="eyebrow" data-i18n="about_eyebrow">Nuestra historia</p>
+    <h2 data-i18n="about_title">Tres generaciones de buen café</h2>
+    <p data-i18n="about_p1">Sol Café nació en 1987 cuando la familia García abrió las puertas de este local en el corazón de Madrid. Lo que empezó como una pequeña cafetería de barrio se ha convertido en un punto de encuentro para vecinos, turistas y amantes del buen café.</p>
+    <p data-i18n="about_p2">Usamos granos seleccionados de América Latina y África, tostados localmente cada semana. Nuestra cocina prepara cada tapa con ingredientes frescos del mercado de abastos. Tradición y calidad en cada plato.</p>
+    <div class="about-tags">
+      <span class="tag" data-i18n="tag1">Granos de origen</span>
+      <span class="tag" data-i18n="tag2">Cocina casera</span>
+      <span class="tag" data-i18n="tag3">Terraza</span>
+      <span class="tag" data-i18n="tag4">Desde 1987</span>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="section-header reveal">
+    <p class="eyebrow" data-i18n="menu_eyebrow">Lo que ofrecemos</p>
+    <h2 data-i18n="menu_title">Nuestra carta</h2>
+  </div>
+  <div class="menu-tabs">
+    <button class="tab-btn active" data-tab="desayuno" data-i18n="tab_desayuno">Desayuno</button>
+    <button class="tab-btn" data-tab="tapas" data-i18n="tab_tapas">Tapas</button>
+    <button class="tab-btn" data-tab="bebidas" data-i18n="tab_bebidas">Bebidas</button>
+    <button class="tab-btn" data-tab="postres" data-i18n="tab_postres">Postres</button>
+  </div>
+
+  <div class="tab-panel active" id="tab-desayuno">
+    <div class="menu-card"><img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500&q=80" alt="Churros"><div class="menu-card-body"><div class="menu-card-top"><span class="menu-card-name" data-i18n="d1_name">Churros con Chocolate</span><span class="menu-card-price">€4.50</span></div><p class="menu-card-desc" data-i18n="d1_desc">Churros artesanos crujientes con chocolate caliente espeso. La tradición madrileña en cada bocado.</p></div></div>
+    <div class="menu-card"><img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?w=500&q=80" alt="Tostada"><div class="menu-card-body"><div class="menu-card-top"><span class="menu-card-name" data-i18n="d2_name">Tostada con Tomate</span><span class="menu-card-price">€3.20</span></div><p class="menu-card-desc" data-i18n="d2_desc">Pan de masa madre tostado, frotado con tomate maduro y aceite de oliva virgen extra.</p></div></div>
+    <div class="menu-card"><img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=500&q=80" alt="Huevos"><div class="menu-card-body"><div class="menu-card-top"><span class="menu-card-name" data-i18n="d3_name">Huevos Rotos</span><span class="menu-card-price">€8.50</span></div><p class="menu-card-desc" data-i18n="d3_desc">Huevos fritos sobre patatas a lo pobre con jamón ibérico. Un clásico de la cocina española.</p></div></div>
+    <div class="menu-card"><img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=500&q=80" alt="Croissant"><div class="menu-card-body"><div class="menu-card-top"><span class="menu-card-name" data-i18n="d4_name">Croissant de Mantequilla</span><span class="menu-card-price">€2.80</span></div><p class="menu-card-desc" data-i18n="d4_desc">Croissant hojaldrado elaborado cada mañana en nuestra cocina. Crujiente por fuera, tierno por dentro.</p></div></div>
+  </div>
+
+  <div class="tab-panel" id="tab-tapas">
+    <div class="menu-card"><img src="https://images.unsplash.com/photo-1541014741259-de529411b96a?w=500&q=80" alt="Patatas Bravas"><div class="menu-card-body"><div class="menu-card-top"><span class="menu-card-name" data-i18n="t1_name">Patatas Bravas</span><span class="menu-card-price">€5.50</span></div><p class="menu-card-desc" data-i18n="t1_desc">Patatas fritas con nuestra salsa brava picante casera y alioli. La tapa más pedida de Madrid.</p></div></div>
+    <div class="menu-card"><img src="https://images.unsplash.com/photo-1600803907087-f56d462fd26b?w=500&q=80" alt="Croquetas"><div class="menu-card-body"><div class="menu-card-top"><span class="menu-card-name" data-i18n="t2_name">Croquetas de Jamón</span><span class="menu-card-price">€6.80</span></div><p class="menu-card-desc" data-i18n="t2_desc">Croquetas cremosas de jamón ibérico. Bechamel suave con tropezones generosos de jamón.</p></div></div>
+    <div class="menu-card"><img src="https://images.unsplash.com/photo-1532980400857-e8d9d275d858?w=500&q=80" alt="Pan con Tomate"><div class="menu-card-body"><div class="menu-card-top"><span class="menu-card-name" data-i18n="t3_name">Tortilla Española</span><span class="menu-card-price">€7.50</span></div><p class="menu-card-desc" data-i18n="t3_desc">Tortilla de patata jugosa al punto. Con o sin cebolla, como más te guste.</p></div></div>
+    <div class="menu-card"><img src="https://images.unsplash.com/photo-1599043513900-ed6fe01d3833?w=500&q=80" alt="Gambas"><div class="menu-card-body"><div class="menu-card-top"><span class="menu-card-name" data-i18n="t4_name">Gambas al Ajillo</span><span class="menu-card-price">€11.50</span></div><p class="menu-card-desc" data-i18n="t4_desc">Gambas salteadas con ajo, guindilla y aceite de oliva virgen. Servidas en cazuela de barro.</p></div></div>
+  </div>
+
+  <div class="tab-panel" id="tab-bebidas">
+    <div class="menu-card"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=500&q=80" alt="Café con leche"><div class="menu-card-body"><div class="menu-card-top"><span class="menu-card-name" data-i18n="b1_name">Café con Leche</span><span class="menu-card-price">€1.80</span></div><p class="menu-card-desc" data-i18n="b1_desc">Nuestro café de especialidad con leche entera vaporizada. El mejor de Madrid, según nuestros clientes.</p></div></div>
+    <div class="menu-card"><img src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=500&q=80" alt="Vino"><div class="menu-card-body"><div class="menu-card-top"><span class="menu-card-name" data-i18n="b2_name">Vino de la Casa</span><span class="menu-card-price">€3.50</span></div><p class="menu-card-desc" data-i18n="b2_desc">Selección de vinos de Ribera del Duero y La Rioja. Pregunta a nuestro sommelier por la copa del día.</p></div></div>
+    <div class="menu-card"><img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=500&q=80" alt="Sangría"><div class="menu-card-body"><div class="menu-card-top"><span class="menu-card-name" data-i18n="b3_name">Sangría Sol</span><span class="menu-card-price">€5.50</span></div><p class="menu-card-desc" data-i18n="b3_desc">Nuestra sangría de temporada con frutas frescas, vino tinto y un toque de brandy español.</p></div></div>
+    <div class="menu-card"><img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=500&q=80" alt="Horchata"><div class="menu-card-body"><div class="menu-card-top"><span class="menu-card-name" data-i18n="b4_name">Horchata de Chufa</span><span class="menu-card-price">€3.20</span></div><p class="menu-card-desc" data-i18n="b4_desc">Horchata natural de chufa valenciana. Fría y cremosa, perfecta para los días de calor madrileño.</p></div></div>
+  </div>
+
+  <div class="tab-panel" id="tab-postres">
+    <div class="menu-card"><img src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?w=500&q=80" alt="Flan"><div class="menu-card-body"><div class="menu-card-top"><span class="menu-card-name" data-i18n="p1_name">Flan Casero</span><span class="menu-card-price">€4.20</span></div><p class="menu-card-desc" data-i18n="p1_desc">Flan de huevo artesano con caramelo tostado. Receta de la abuela, igual desde 1987.</p></div></div>
+    <div class="menu-card"><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500&q=80" alt="Tarta de Santiago"><div class="menu-card-body"><div class="menu-card-top"><span class="menu-card-name" data-i18n="p2_name">Tarta de Santiago</span><span class="menu-card-price">€4.80</span></div><p class="menu-card-desc" data-i18n="p2_desc">Tarta de almendra tradicional gallega, húmeda y aromática, con la cruz de Santiago en azúcar glas.</p></div></div>
+    <div class="menu-card"><img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=500&q=80" alt="Arroz con leche"><div class="menu-card-body"><div class="menu-card-top"><span class="menu-card-name" data-i18n="p3_name">Arroz con Leche</span><span class="menu-card-price">€3.80</span></div><p class="menu-card-desc" data-i18n="p3_desc">Cremoso arroz con leche asturiano, infusionado con canela y limón. Templado o frío, a tu gusto.</p></div></div>
+    <div class="menu-card"><img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=500&q=80" alt="Crema Catalana"><div class="menu-card-body"><div class="menu-card-top"><span class="menu-card-name" data-i18n="p4_name">Crema Catalana</span><span class="menu-card-price">€4.50</span></div><p class="menu-card-desc" data-i18n="p4_desc">La versión española de la crème brûlée con su característico caramelo crujiente quemado al momento.</p></div></div>
+  </div>
+</section>
+
+<!-- SPECIALS -->
+<section class="specials">
+  <div class="section-header reveal">
+    <p class="eyebrow" data-i18n="specials_eyebrow">Solo esta semana</p>
+    <h2 data-i18n="specials_title">Menú del Día</h2>
+  </div>
+  <div class="specials-grid">
+    <div class="special-card reveal"><p class="special-day" data-i18n="sp1_day">Lunes y Martes</p><h3 class="special-name" data-i18n="sp1_name">Menú Completo</h3><p class="special-desc" data-i18n="sp1_desc">Primero, segundo, postre y bebida. Cocina del día con productos frescos del mercado.</p><span class="special-price">€12.50</span></div>
+    <div class="special-card reveal"><p class="special-day" data-i18n="sp2_day">Miércoles</p><h3 class="special-name" data-i18n="sp2_name">Raciones de Temporada</h3><p class="special-desc" data-i18n="sp2_desc">Tres raciones a elegir de la carta con media botella de vino de la casa incluida.</p><span class="special-price">€18.00</span></div>
+    <div class="special-card reveal"><p class="special-day" data-i18n="sp3_day">Jueves</p><h3 class="special-name" data-i18n="sp3_name">Tapas y Cañas</h3><p class="special-desc" data-i18n="sp3_desc">Cuatro tapas clásicas con cuatro cañas de cerveza. La tarde perfecta en Madrid.</p><span class="special-price">€15.00</span></div>
+    <div class="special-card reveal"><p class="special-day" data-i18n="sp4_day">Viernes y Sábado</p><h3 class="special-name" data-i18n="sp4_name">Brunch Especial</h3><p class="special-desc" data-i18n="sp4_desc">Buffet de brunch ilimitado de 10:00 a 14:00. Incluye café, zumo y una copa de cava.</p><span class="special-price">€22.00</span></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="section-header reveal">
+    <p class="eyebrow" data-i18n="gallery_eyebrow">Nuestro espacio</p>
+    <h2 data-i18n="gallery_title">Galería</h2>
+  </div>
+  <div class="gallery-grid reveal">
+    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=700&q=80" alt="Café">
+    <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=500&q=80" alt="Interior">
+    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&q=80" alt="Coffee">
+    <img src="https://images.unsplash.com/photo-1541014741259-de529411b96a?w=500&q=80" alt="Tapas">
+    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500&q=80" alt="Churros">
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-header reveal">
+    <p class="eyebrow" data-i18n="testi_eyebrow">Lo que dicen</p>
+    <h2 data-i18n="testi_title">Opiniones</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal"><div class="stars">★★★★★</div><p class="testi-text" data-i18n="testi1">"Los mejores churros de Madrid, sin duda. Vengo cada domingo con mi familia desde hace años. El ambiente es único, como estar en casa de alguien que cocina muy bien."</p><strong class="testi-name">María González</strong><span class="testi-loc">Madrid</span></div>
+    <div class="testi-card reveal"><div class="stars">★★★★★</div><p class="testi-text" data-i18n="testi2">"Encontré este café por casualidad y me enamoré. Las croquetas de jamón son las mejores que he probado en mi vida. Ya les digo a todos mis amigos que vengan aquí."</p><strong class="testi-name">James Thompson</strong><span class="testi-loc">London, UK</span></div>
+    <div class="testi-card reveal"><div class="stars">★★★★★</div><p class="testi-text" data-i18n="testi3">"El menú del día es una barbaridad de bueno para ese precio. Primero, segundo y postre de calidad real. No es comida de menú, es comida de restaurante."</p><strong class="testi-name">Carlos Ruiz</strong><span class="testi-loc">Madrid</span></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div>
+    <div class="contact-info reveal">
+      <p class="eyebrow" data-i18n="contact_eyebrow">Encuéntranos</p>
+      <h2 data-i18n="contact_title">Visítanos en Madrid</h2>
+      <div class="contact-detail"><div class="contact-icon">📍</div><div class="contact-detail-text"><strong data-i18n="contact_addr_label">Dirección</strong><span>Calle del Sol, 14, Madrid 28013</span></div></div>
+      <div class="contact-detail"><div class="contact-icon">🕐</div><div class="contact-detail-text"><strong data-i18n="contact_hours_label">Horario</strong><span data-i18n="contact_hours">Lun–Dom: 08:00–23:00</span></div></div>
+      <div class="contact-detail"><div class="contact-icon">📞</div><div class="contact-detail-text"><strong data-i18n="contact_phone_label">Teléfono</strong><span>+34 91 123 45 67</span></div></div>
+      <div class="contact-detail"><div class="contact-icon">✉️</div><div class="contact-detail-text"><strong>Email</strong><span>hola@solcafe.es</span></div></div>
+    </div>
+    <div class="map-wrap reveal">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.6!2d-3.7037902!3d40.4167754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd42288!2sMadrid!5e0!3m2!1ses!2ses!4v1" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+  <div class="contact-form reveal">
+    <div class="section-header" style="text-align:left;margin-bottom:28px">
+      <p class="eyebrow" data-i18n="form_eyebrow">Reserva</p>
+      <h2 style="font-size:1.6rem" data-i18n="form_title">Reserva tu mesa</h2>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label data-i18n="form_name">Nombre</label><input type="text" data-i18n-ph="form_name_ph"></div>
+      <div class="form-group"><label data-i18n="form_email">Email</label><input type="email" data-i18n-ph="form_email_ph"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label data-i18n="form_date">Fecha</label><input type="date"></div>
+      <div class="form-group"><label data-i18n="form_guests">Personas</label><select><option>1</option><option>2</option><option>3</option><option>4</option><option value="5+">5+</option></select></div>
+    </div>
+    <div class="form-group"><label data-i18n="form_note">Nota especial</label><textarea data-i18n-ph="form_note_ph"></textarea></div>
+    <button class="btn-primary" style="width:100%" data-i18n="form_submit">Reservar ahora</button>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <h2 data-i18n="nl_title">¿Quieres enterarte primero?</h2>
+  <p data-i18n="nl_sub">Apúntate y te avisamos de los menús del día, eventos especiales y descuentos exclusivos.</p>
+  <div class="newsletter-form">
+    <input type="email" data-i18n-ph="nl_ph">
+    <button data-i18n="nl_btn">Apuntarme</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo">Sol <span>Café</span></div>
+      <p data-i18n="footer_desc">Tres generaciones de café, tapas y buen ambiente en el corazón de Madrid. Desde 1987.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer_nav">Navegación</h4>
+      <ul>
+        <li><a href="#about" data-i18n="nav_about">Nosotros</a></li>
+        <li><a href="#menu" data-i18n="nav_menu">Carta</a></li>
+        <li><a href="#gallery" data-i18n="nav_gallery">Galería</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer_hours">Horario</h4>
+      <ul>
+        <li><a data-i18n="footer_h1">Lun–Vie: 08:00–22:00</a></li>
+        <li><a data-i18n="footer_h2">Sáb: 09:00–23:00</a></li>
+        <li><a data-i18n="footer_h3">Dom: 09:00–21:00</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer_contact">Contacto</h4>
+      <ul>
+        <li><a href="tel:+34911234567">+34 91 123 45 67</a></li>
+        <li><a href="mailto:hola@solcafe.es">hola@solcafe.es</a></li>
+        <li><a data-i18n="footer_addr">Calle del Sol, 14, Madrid</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p data-i18n="footer_copy">© 2025 Sol Café. Todos los derechos reservados.</p>
+    <p>
+      <a href="mailto:vinayakganiger445@gmail.com" data-i18n="footer_credit_link">Sitio web por Vinayak Ganiger</a>
+      &nbsp;·&nbsp;
+      <a href="https://wa.me/4916364141​97" target="_blank">WhatsApp</a>
+    </p>
+  </div>
+  <p class="footer-credit">Template created by <a href="mailto:vinayakganiger445@gmail.com">Vinayak Ganiger</a> · Co-created with Claude (Anthropic AI)</p>
+</footer>
+
+<!-- FLOAT CTA -->
+<button class="float-cta" id="floatCta">
+  <span>🪑</span>
+  <span data-i18n="float_cta">Reservar mesa</span>
+</button>
+
+<script>
+const translations = {
+  es: {
+    nav_about:"Nosotros", nav_menu:"Carta", nav_gallery:"Galería", nav_contact:"Contacto",
+    hero_eyebrow:"Madrid, desde 1987", hero_title1:"El sabor", hero_title2:"de siempre",
+    hero_sub:"Desayunos caseros, tapas auténticas y el mejor café con leche de Madrid. Ven a sentirte como en casa.",
+    hero_btn1:"Ver la carta", hero_btn2:"Reservar mesa", hero_badge:"años sirviendo Madrid",
+    strip1:"Café de especialidad", strip2:"Churros artesanos", strip3:"Vinos de la tierra", strip4:"Lun–Dom 8:00–23:00",
+    about_eyebrow:"Nuestra historia", about_title:"Tres generaciones de buen café",
+    about_p1:"Sol Café nació en 1987 cuando la familia García abrió las puertas de este local en el corazón de Madrid. Lo que empezó como una pequeña cafetería de barrio se ha convertido en un punto de encuentro para vecinos, turistas y amantes del buen café.",
+    about_p2:"Usamos granos seleccionados de América Latina y África, tostados localmente cada semana. Nuestra cocina prepara cada tapa con ingredientes frescos del mercado de abastos. Tradición y calidad en cada plato.",
+    tag1:"Granos de origen", tag2:"Cocina casera", tag3:"Terraza", tag4:"Desde 1987",
+    menu_eyebrow:"Lo que ofrecemos", menu_title:"Nuestra carta",
+    tab_desayuno:"Desayuno", tab_tapas:"Tapas", tab_bebidas:"Bebidas", tab_postres:"Postres",
+    d1_name:"Churros con Chocolate", d1_desc:"Churros artesanos crujientes con chocolate caliente espeso. La tradición madrileña en cada bocado.",
+    d2_name:"Tostada con Tomate", d2_desc:"Pan de masa madre tostado, frotado con tomate maduro y aceite de oliva virgen extra.",
+    d3_name:"Huevos Rotos", d3_desc:"Huevos fritos sobre patatas a lo pobre con jamón ibérico. Un clásico de la cocina española.",
+    d4_name:"Croissant de Mantequilla", d4_desc:"Croissant hojaldrado elaborado cada mañana en nuestra cocina. Crujiente por fuera, tierno por dentro.",
+    t1_name:"Patatas Bravas", t1_desc:"Patatas fritas con nuestra salsa brava picante casera y alioli. La tapa más pedida de Madrid.",
+    t2_name:"Croquetas de Jamón", t2_desc:"Croquetas cremosas de jamón ibérico. Bechamel suave con tropezones generosos de jamón.",
+    t3_name:"Tortilla Española", t3_desc:"Tortilla de patata jugosa al punto. Con o sin cebolla, como más te guste.",
+    t4_name:"Gambas al Ajillo", t4_desc:"Gambas salteadas con ajo, guindilla y aceite de oliva virgen. Servidas en cazuela de barro.",
+    b1_name:"Café con Leche", b1_desc:"Nuestro café de especialidad con leche entera vaporizada. El mejor de Madrid, según nuestros clientes.",
+    b2_name:"Vino de la Casa", b2_desc:"Selección de vinos de Ribera del Duero y La Rioja. Pregunta a nuestro sommelier por la copa del día.",
+    b3_name:"Sangría Sol", b3_desc:"Nuestra sangría de temporada con frutas frescas, vino tinto y un toque de brandy español.",
+    b4_name:"Horchata de Chufa", b4_desc:"Horchata natural de chufa valenciana. Fría y cremosa, perfecta para los días de calor madrileño.",
+    p1_name:"Flan Casero", p1_desc:"Flan de huevo artesano con caramelo tostado. Receta de la abuela, igual desde 1987.",
+    p2_name:"Tarta de Santiago", p2_desc:"Tarta de almendra tradicional gallega, húmeda y aromática, con la cruz de Santiago en azúcar glas.",
+    p3_name:"Arroz con Leche", p3_desc:"Cremoso arroz con leche asturiano, infusionado con canela y limón. Templado o frío, a tu gusto.",
+    p4_name:"Crema Catalana", p4_desc:"La versión española de la crème brûlée con su característico caramelo crujiente quemado al momento.",
+    specials_eyebrow:"Solo esta semana", specials_title:"Menú del Día",
+    sp1_day:"Lunes y Martes", sp1_name:"Menú Completo", sp1_desc:"Primero, segundo, postre y bebida. Cocina del día con productos frescos del mercado.",
+    sp2_day:"Miércoles", sp2_name:"Raciones de Temporada", sp2_desc:"Tres raciones a elegir de la carta con media botella de vino de la casa incluida.",
+    sp3_day:"Jueves", sp3_name:"Tapas y Cañas", sp3_desc:"Cuatro tapas clásicas con cuatro cañas de cerveza. La tarde perfecta en Madrid.",
+    sp4_day:"Viernes y Sábado", sp4_name:"Brunch Especial", sp4_desc:"Buffet de brunch ilimitado de 10:00 a 14:00. Incluye café, zumo y una copa de cava.",
+    gallery_eyebrow:"Nuestro espacio", gallery_title:"Galería",
+    testi_eyebrow:"Lo que dicen", testi_title:"Opiniones",
+    testi1:'"Los mejores churros de Madrid, sin duda. Vengo cada domingo con mi familia desde hace años. El ambiente es único, como estar en casa de alguien que cocina muy bien."',
+    testi2:'"Encontré este café por casualidad y me enamoré. Las croquetas de jamón son las mejores que he probado en mi vida. Ya les digo a todos mis amigos que vengan aquí."',
+    testi3:'"El menú del día es una barbaridad de bueno para ese precio. Primero, segundo y postre de calidad real. No es comida de menú, es comida de restaurante."',
+    contact_eyebrow:"Encuéntranos", contact_title:"Visítanos en Madrid",
+    contact_addr_label:"Dirección", contact_hours_label:"Horario", contact_hours:"Lun–Dom: 08:00–23:00", contact_phone_label:"Teléfono",
+    form_eyebrow:"Reserva", form_title:"Reserva tu mesa",
+    form_name:"Nombre", form_name_ph:"Tu nombre", form_email:"Email", form_email_ph:"tu@email.com",
+    form_date:"Fecha", form_guests:"Personas", form_note:"Nota especial", form_note_ph:"Alergia, ocasión especial...", form_submit:"Reservar ahora",
+    nl_title:"¿Quieres enterarte primero?", nl_sub:"Apúntate y te avisamos de los menús del día, eventos especiales y descuentos exclusivos.", nl_ph:"tu@email.com", nl_btn:"Apuntarme",
+    footer_desc:"Tres generaciones de café, tapas y buen ambiente en el corazón de Madrid. Desde 1987.",
+    footer_nav:"Navegación", footer_hours:"Horario", footer_contact:"Contacto",
+    footer_h1:"Lun–Vie: 08:00–22:00", footer_h2:"Sáb: 09:00–23:00", footer_h3:"Dom: 09:00–21:00",
+    footer_addr:"Calle del Sol, 14, Madrid", footer_copy:"© 2025 Sol Café. Todos los derechos reservados.",
+    footer_credit_link:"Sitio web por Vinayak Ganiger", float_cta:"Reservar mesa"
+  },
+  en: {
+    nav_about:"About", nav_menu:"Menu", nav_gallery:"Gallery", nav_contact:"Contact",
+    hero_eyebrow:"Madrid, since 1987", hero_title1:"The taste of", hero_title2:"always",
+    hero_sub:"Home-style breakfasts, authentic tapas and the best café con leche in Madrid. Come feel right at home.",
+    hero_btn1:"See the menu", hero_btn2:"Book a table", hero_badge:"years serving Madrid",
+    strip1:"Specialty coffee", strip2:"Artisan churros", strip3:"Local wines", strip4:"Mon–Sun 8:00–23:00",
+    about_eyebrow:"Our story", about_title:"Three generations of great coffee",
+    about_p1:"Sol Café was born in 1987 when the García family opened the doors of this spot in the heart of Madrid. What started as a small neighbourhood café has become a meeting point for locals, tourists and coffee lovers alike.",
+    about_p2:"We use carefully selected beans from Latin America and Africa, roasted locally every week. Our kitchen prepares every tapa with fresh ingredients from the local market. Tradition and quality in every dish.",
+    tag1:"Single-origin beans", tag2:"Home cooking", tag3:"Terrace", tag4:"Since 1987",
+    menu_eyebrow:"What we offer", menu_title:"Our menu",
+    tab_desayuno:"Breakfast", tab_tapas:"Tapas", tab_bebidas:"Drinks", tab_postres:"Desserts",
+    d1_name:"Churros with Chocolate", d1_desc:"Crispy artisan churros with thick hot chocolate. Madrid tradition in every bite.",
+    d2_name:"Toast with Tomato", d2_desc:"Toasted sourdough rubbed with ripe tomato and extra virgin olive oil.",
+    d3_name:"Huevos Rotos", d3_desc:"Fried eggs over braised potatoes with Iberian ham. A classic of Spanish cuisine.",
+    d4_name:"Butter Croissant", d4_desc:"Flaky croissant made fresh every morning in our kitchen. Crispy outside, soft inside.",
+    t1_name:"Patatas Bravas", t1_desc:"Fried potatoes with our homemade spicy brava sauce and aioli. Madrid's most-ordered tapa.",
+    t2_name:"Ham Croquettes", t2_desc:"Creamy Iberian ham croquettes. Silky béchamel with generous chunks of jamón.",
+    t3_name:"Spanish Omelette", t3_desc:"Juicy potato omelette cooked just right. With or without onion, your call.",
+    t4_name:"Gambas al Ajillo", t4_desc:"Prawns sautéed with garlic, chilli and virgin olive oil. Served in a clay pot.",
+    b1_name:"Café con Leche", b1_desc:"Our specialty coffee with steamed whole milk. The best in Madrid, according to our regulars.",
+    b2_name:"House Wine", b2_desc:"Selection of wines from Ribera del Duero and La Rioja. Ask our sommelier for today's glass.",
+    b3_name:"Sol Sangria", b3_desc:"Our seasonal sangria with fresh fruit, red wine and a splash of Spanish brandy.",
+    b4_name:"Horchata de Chufa", b4_desc:"Natural tiger nut horchata from Valencia. Cold and creamy, perfect for warm Madrid days.",
+    p1_name:"Homemade Flan", p1_desc:"Artisan egg flan with toasted caramel. Grandma's recipe, unchanged since 1987.",
+    p2_name:"Tarta de Santiago", p2_desc:"Traditional Galician almond tart, moist and aromatic, with the cross of Santiago in icing sugar.",
+    p3_name:"Rice Pudding", p3_desc:"Creamy Asturian rice pudding infused with cinnamon and lemon. Warm or cold, your choice.",
+    p4_name:"Crema Catalana", p4_desc:"The Spanish take on crème brûlée with its characteristic crunchy caramel torched to order.",
+    specials_eyebrow:"This week only", specials_title:"Menú del Día",
+    sp1_day:"Monday and Tuesday", sp1_name:"Full Menu", sp1_desc:"Starter, main, dessert and drink. Daily cooking with fresh market produce.",
+    sp2_day:"Wednesday", sp2_name:"Seasonal Raciones", sp2_desc:"Three dishes from the menu with half a bottle of house wine included.",
+    sp3_day:"Thursday", sp3_name:"Tapas and Beers", sp3_desc:"Four classic tapas with four draught beers. The perfect Madrid afternoon.",
+    sp4_day:"Friday and Saturday", sp4_name:"Special Brunch", sp4_desc:"Unlimited brunch buffet from 10:00 to 14:00. Includes coffee, juice and a glass of cava.",
+    gallery_eyebrow:"Our space", gallery_title:"Gallery",
+    testi_eyebrow:"What they say", testi_title:"Reviews",
+    testi1:'"The best churros in Madrid, without a doubt. I come every Sunday with my family. The atmosphere is one of a kind, like being in someone\'s home where the cooking is brilliant."',
+    testi2:'"I found this café by accident and fell in love. The ham croquettes are the best I\'ve ever tasted. I now send every friend who visits Madrid straight here."',
+    testi3:'"The menú del día is incredible value. Real quality food — starter, main and dessert. This isn\'t set-menu food, it\'s proper restaurant cooking."',
+    contact_eyebrow:"Find us", contact_title:"Visit us in Madrid",
+    contact_addr_label:"Address", contact_hours_label:"Opening hours", contact_hours:"Mon–Sun: 08:00–23:00", contact_phone_label:"Phone",
+    form_eyebrow:"Reservation", form_title:"Book your table",
+    form_name:"Name", form_name_ph:"Your name", form_email:"Email", form_email_ph:"you@email.com",
+    form_date:"Date", form_guests:"Guests", form_note:"Special note", form_note_ph:"Allergy, special occasion...", form_submit:"Book now",
+    nl_title:"Want to hear first?", nl_sub:"Sign up and we'll let you know about daily specials, events and exclusive discounts.", nl_ph:"you@email.com", nl_btn:"Sign me up",
+    footer_desc:"Three generations of coffee, tapas and good vibes in the heart of Madrid. Since 1987.",
+    footer_nav:"Navigation", footer_hours:"Hours", footer_contact:"Contact",
+    footer_h1:"Mon–Fri: 08:00–22:00", footer_h2:"Sat: 09:00–23:00", footer_h3:"Sun: 09:00–21:00",
+    footer_addr:"Calle del Sol, 14, Madrid", footer_copy:"© 2025 Sol Café. All rights reserved.",
+    footer_credit_link:"Website by Vinayak Ganiger", float_cta:"Book a table"
+  }
+};
+
+let currentLang = localStorage.getItem('sol_lang') || 'es';
+function applyLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('sol_lang', lang);
+  document.documentElement.lang = lang;
+  const t = translations[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => { if (t[el.getAttribute('data-i18n')] !== undefined) el.textContent = t[el.getAttribute('data-i18n')]; });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => { if (t[el.getAttribute('data-i18n-ph')] !== undefined) el.placeholder = t[el.getAttribute('data-i18n-ph')]; });
+  document.querySelectorAll('.lang-btn').forEach(btn => { btn.classList.toggle('active', btn.dataset.lang === lang); });
+}
+document.querySelectorAll('.lang-btn').forEach(btn => { btn.addEventListener('click', () => applyLang(btn.dataset.lang)); });
+
+// Dark mode
+let isDark = localStorage.getItem('sol_dark') === 'true';
+function applyDark() { document.body.classList.toggle('dark-mode', isDark); document.getElementById('darkToggle').textContent = isDark ? '☀️' : '🌙'; }
+document.getElementById('darkToggle').addEventListener('click', () => { isDark = !isDark; localStorage.setItem('sol_dark', isDark); applyDark(); });
+
+// Loader
+window.addEventListener('load', () => { setTimeout(() => document.getElementById('loader').classList.add('hide'), 900); });
+
+// Navbar scroll
+window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50); });
+
+// Tabs
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+// Float CTA
+const contactSection = document.getElementById('contact');
+const floatCta = document.getElementById('floatCta');
+floatCta.addEventListener('click', () => contactSection.scrollIntoView({ behavior: 'smooth' }));
+const obs = new IntersectionObserver(([e]) => floatCta.classList.toggle('hide', e.isIntersecting), { threshold: 0.1 });
+obs.observe(contactSection);
+
+// Scroll reveal
+const revealObs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } }); }, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+// Nav toggle
+document.getElementById('navToggle').addEventListener('click', () => {
+  const links = document.querySelector('.nav-links');
+  links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+  links.style.flexDirection = 'column';
+  links.style.position = 'absolute';
+  links.style.top = '70px';
+  links.style.left = '0';
+  links.style.right = '0';
+  links.style.background = 'rgba(44,24,16,0.98)';
+  links.style.padding = '20px 5%';
+  links.style.gap = '16px';
+});
+
+applyLang(currentLang);
+applyDark();
+</script>
+</body>
+</html>
